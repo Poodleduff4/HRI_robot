@@ -1,0 +1,22 @@
+1. 
+WIFI SSID
+TP-Link_3720
+WIFI password
+3C4C46E4
+
+2.
+COMMAND
+ssh lukeguardino@192.168.0.165
+password: pi
+
+3.
+cd to Robot Code Directory
+/home/lukeguardino/Documents/Robot/src
+
+4.
+RUN ENV ACTIVATION
+source ../bin/activate
+
+5. ON LOCAL MACHINE, RUN SERVER.PY
+
+6. ON PI, RUN client_pwm.py
