@@ -28,11 +28,11 @@ def callback(e:keyboard.KeyboardEvent):
     data=c
 
 def get_pressed_keys():
-    w = keyboard.is_pressed(87)
-    a = keyboard.is_pressed(65)
-    s = keyboard.is_pressed(83)
-    d = keyboard.is_pressed(68)
-    boost = keyboard.is_pressed(32)
+    w = keyboard.is_pressed(17)
+    a = keyboard.is_pressed(30)
+    s = keyboard.is_pressed(31)
+    d = keyboard.is_pressed(32)
+    boost = keyboard.is_pressed(20)
     return map(lambda x:int(x), [w,a,s,d,boost])
     
 
