@@ -2,7 +2,7 @@ import json
 import socket
 import keyboard
 
-ADDR_A = ('192.168.0.110', 9999)
+ADDR_A = ('192.168.0.123', 9999)
 ADDR_B = ('192.168.0.165', 9999)
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind(ADDR_A)
@@ -28,11 +28,11 @@ def callback(e:keyboard.KeyboardEvent):
     data=c
 
 def get_pressed_keys():
-    w = keyboard.is_pressed(13)
-    a = keyboard.is_pressed(0)
-    s = keyboard.is_pressed(1)
-    d = keyboard.is_pressed(2)
-    boost = keyboard.is_pressed(49)
+    w = keyboard.is_pressed(87)
+    a = keyboard.is_pressed(65)
+    s = keyboard.is_pressed(83)
+    d = keyboard.is_pressed(68)
+    boost = keyboard.is_pressed(32)
     return map(lambda x:int(x), [w,a,s,d,boost])
     
 
