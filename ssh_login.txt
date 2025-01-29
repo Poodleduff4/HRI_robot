@@ -11,12 +11,15 @@ password: pi
 
 3.
 cd to Robot Code Directory
-/home/lukeguardino/Documents/Robot/src
+cd /home/lukeguardino/Documents/Robot/src
 
 4.
 RUN ENV ACTIVATION
 source ../bin/activate
 
-5. ON LOCAL MACHINE, RUN SERVER.PY
+5. ON PI, RUN client_pwm.py/client_windows.py/client_windows_2.py
+python client_pwm.py
+python client_windows.py
+python client_windows_2.py
 
-6. ON PI, RUN client_pwm.py
+6. ON LOCAL MACHINE, RUN SERVER.PY/SERVER_WINDOWS.PY/SERVER_WINDOWS_2.PY
