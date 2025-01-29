@@ -33,7 +33,9 @@ def get_pressed_keys():
     s = keyboard.is_pressed(1)
     d = keyboard.is_pressed(2)
     boost = keyboard.is_pressed(49)
-    return map(lambda x:int(x), [w,a,s,d,boost])
+    left = keyboard.is_pressed(123) 
+    right = keyboard.is_pressed(124)
+    return map(lambda x:int(x), [w,a,s,d,boost,left,right])
     
 
 while True:
