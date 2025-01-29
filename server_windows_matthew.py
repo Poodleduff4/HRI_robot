@@ -2,7 +2,7 @@ import json
 import socket
 import keyboard
 
-ADDR_A = ('192.168.0.', 9999)
+ADDR_A = ('192.168.0.173', 9999)
 ADDR_B = ('192.168.0.165', 9999)
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind(ADDR_A)
