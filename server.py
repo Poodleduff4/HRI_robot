@@ -1,8 +1,22 @@
 import json
 import socket
 import keyboard
+import socket
+import platform
 
-ADDR_A = ('192.168.0.110', 9999)
+# Get the host name, print it and then set ADDR_A based on the ip address
+hostname = socket.gethostname()
+IPAddr = socket.gethostbyname(hostname)
+
+print("Your Computer Name is: " + hostname)
+print("Your Computer IP Address is: " + IPAddr)
+
+# Gets the current system
+currentPlatform = platform.system()
+
+print("Your Computer Platform is: " + currentPlatform)
+
+ADDR_A = (IPAddr, 9999)
 ADDR_B = ('192.168.0.165', 9999)
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind(ADDR_A)
@@ -12,29 +26,26 @@ data=''
 def callback(e:keyboard.KeyboardEvent):
     c = e.scan_code
     print(c)
-    # l = ''
-    # match c:
-    #     case 1:
-    #         l='s'
-    #     case 2:
-    #         l='d'
-    #     case 3:
-    #         l='f'
-    #     case 14:
-    #         l='e'
-    #     case _:
-    #         l='None'
-    # print(l)
     data=c
 
 def get_pressed_keys():
-    w = keyboard.is_pressed(13)
-    a = keyboard.is_pressed(0)
-    s = keyboard.is_pressed(1)
-    d = keyboard.is_pressed(2)
-    boost = keyboard.is_pressed(49)
-    left = keyboard.is_pressed(123) 
-    right = keyboard.is_pressed(124)
+    if (currentPlatform == "Windows"):
+        w = keyboard.is_pressed(17)
+        a = keyboard.is_pressed(30)
+        s = keyboard.is_pressed(31)
+        d = keyboard.is_pressed(32)
+        boost = keyboard.is_pressed(20)
+        left = keyboard.is_pressed(37) 
+        right = keyboard.is_pressed(39)
+    else:
+        w = keyboard.is_pressed(13)
+        a = keyboard.is_pressed(0)
+        s = keyboard.is_pressed(1)
+        d = keyboard.is_pressed(2)
+        boost = keyboard.is_pressed(49)
+        left = keyboard.is_pressed(123) 
+        right = keyboard.is_pressed(124)
+
     return map(lambda x:int(x), [w,a,s,d,boost,left,right])
     
 
