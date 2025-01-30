@@ -17,9 +17,7 @@ cd /home/lukeguardino/Documents/Robot/src
 RUN ENV ACTIVATION
 source ../bin/activate
 
-5. ON PI, RUN client_pwm.py/client_windows.py/client_windows_2.py
-python client_pwm.py
-python client_windows.py
-python client_windows_2.py
+5. ON PI, RUN client.py
+python client.py
 
-6. ON LOCAL MACHINE, RUN SERVER.PY/SERVER_WINDOWS.PY/SERVER_WINDOWS_MATTHEW.PY
+6. ON LOCAL MACHINE, RUN SERVER.PY
