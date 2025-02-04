@@ -1,11 +1,16 @@
 import json
 import socket
 import keyboard
+import serial
 
-ADDR_A = ('192.168.0.110', 9999)
-ADDR_B = ('192.168.0.165', 9999)
-sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-sock.bind(ADDR_A)
+# ADDR_A = ('192.168.0.110', 9999)
+# ADDR_B = ('192.168.0.165', 9999)
+# sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+# sock.bind(ADDR_A)
+
+s = serial.Serial('/dev/cu.usbserial-130', 115200)
+s.close()
+s.open()
 
 data=''
 
@@ -37,8 +42,14 @@ def get_pressed_keys():
     right = keyboard.is_pressed(124)
     return map(lambda x:int(x), [w,a,s,d,boost,left,right])
     
+def get_joystick():
+    data = s.readline().decode()
+    split = data.split('|')
+    return float(split[0]),float(split[1].strip())
 
 while True:
+    print(get_joystick())
+    continue
     #continuously send and receive info to program B until some breaking condition reached
     # print("A sending...")
     data=''
