@@ -3,7 +3,7 @@ import socket
 import keyboard
 import socket
 import time
-import serial
+# import serial
 
 # IP Adresses, last 3 digits
 # Noah: 123
@@ -22,9 +22,9 @@ ADDR_B = ('192.168.0.165', 9999)
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind(ADDR_A)
 
-s = serial.Serial('/dev/cu.usbserial-130', 115200)
-s.close()
-s.open()
+# s = serial.Serial('/dev/cu.usbserial-130', 115200)
+# s.close()
+# s.open()
 
 data=''
 
@@ -33,16 +33,16 @@ def callback(e:keyboard.KeyboardEvent):
     print(c)
     data=c
 
-def get_joystick():
-    data = s.readline().decode()
-    split = data.split('|')
-    return float(split[0]),float(split[1].strip())
+# def get_joystick():
+#     data = s.readline().decode()
+#     split = data.split('|')
+#     return float(split[0]),float(split[1].strip())
 
 def get_pressed_keys():
-    w = keyboard.is_pressed("w")
-    a = keyboard.is_pressed("a")
-    s = keyboard.is_pressed("s")
-    d = keyboard.is_pressed("d")
+    w = keyboard.is_pressed("W")
+    a = keyboard.is_pressed("A")
+    s = keyboard.is_pressed("S")
+    d = keyboard.is_pressed("D")
     boost = keyboard.is_pressed("Space")
     left = keyboard.is_pressed("Left") 
     right = keyboard.is_pressed("Right")
@@ -57,7 +57,7 @@ while True:
     data=''
     # keyboard.hook(callback=callback, suppress=False)
     keys = list(get_pressed_keys())
-    joystick = get_joystick()
+    # joystick = get_joystick()
     
     # Note: this will be silently dropped if the client is not up and running yet
     # And even if the the client is running, it may still be silently dropped since UDP is unreliable.
@@ -67,7 +67,7 @@ while True:
     
     if time.time() - start_time >= 0.1:
         print(keys)
-        print(joystick)
+        # print(joystick)
         # print("A receiving...")
         # print(recv_data.decode('utf-8'))
         start_time = time.time()
