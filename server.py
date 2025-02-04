@@ -3,6 +3,7 @@ import socket
 import keyboard
 import socket
 import platform
+import time
 
 # IP Adresses, last 3 digits
 # Noah: 123
@@ -34,25 +35,17 @@ def callback(e:keyboard.KeyboardEvent):
     data=c
 
 def get_pressed_keys():
-    if (currentPlatform == "Windows"):
-        w = keyboard.is_pressed(17)
-        a = keyboard.is_pressed(30)
-        s = keyboard.is_pressed(31)
-        d = keyboard.is_pressed(32)
-        boost = keyboard.is_pressed(20)
-        left = keyboard.is_pressed(37) 
-        right = keyboard.is_pressed(39)
-    else:
-        w = keyboard.is_pressed(13)
-        a = keyboard.is_pressed(0)
-        s = keyboard.is_pressed(1)
-        d = keyboard.is_pressed(2)
-        boost = keyboard.is_pressed(49)
-        left = keyboard.is_pressed(123) 
-        right = keyboard.is_pressed(124)
+    w = keyboard.is_pressed("w")
+    a = keyboard.is_pressed("a")
+    s = keyboard.is_pressed("s")
+    d = keyboard.is_pressed("d")
+    boost = keyboard.is_pressed("Space")
+    left = keyboard.is_pressed("Left") 
+    right = keyboard.is_pressed("Right")
 
     return map(lambda x:int(x), [w,a,s,d,boost,left,right])
     
+start_time = time.time()
 
 while True:
     #continuously send and receive info to program B until some breaking condition reached
@@ -61,12 +54,14 @@ while True:
     # keyboard.hook(callback=callback, suppress=False)
     keys = list(get_pressed_keys())
     
-    # print(keys)
     # Note: this will be silently dropped if the client is not up and running yet
     # And even if the the client is running, it may still be silently dropped since UDP is unreliable.
     sock.sendto(json.dumps(''.join(map(str,keys))).encode("utf-8"), ADDR_B)
-    print("A receiving...")
-    recv_data = sock.recv(1024)
-    print(recv_data.decode('utf-8'))
 
-    # print(f"A received {recv_data}")
+    # recv_data = sock.recv(1024)
+    
+    if time.time() - start_time >= 0.1:
+        print(keys)
+        # print("A receiving...")
+        # print(recv_data.decode('utf-8'))
+        start_time = time.time()
