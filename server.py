@@ -33,8 +33,6 @@ def callback(e:keyboard.KeyboardEvent):
     print(c)
     data=c
 
-
-
 def get_joystick():
     data = s.readline().decode()
     split = data.split('|')
@@ -60,7 +58,6 @@ while True:
     # keyboard.hook(callback=callback, suppress=False)
     keys = list(get_pressed_keys())
     joystick = get_joystick()
-    print(joystick)
     
     # Note: this will be silently dropped if the client is not up and running yet
     # And even if the the client is running, it may still be silently dropped since UDP is unreliable.
@@ -70,6 +67,7 @@ while True:
     
     if time.time() - start_time >= 0.1:
         print(keys)
+        print(joystick)
         # print("A receiving...")
         # print(recv_data.decode('utf-8'))
         start_time = time.time()
