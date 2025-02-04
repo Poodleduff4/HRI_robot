@@ -4,6 +4,11 @@ import keyboard
 import socket
 import platform
 
+# IP Adresses, last 3 digits
+# Noah: 123
+# Luke: 110
+# Matthew: 173
+
 # Get the host name, print it and then set ADDR_A based on the ip address
 hostname = socket.gethostname()
 IPAddr = socket.gethostbyname(hostname)
