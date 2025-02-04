@@ -2,7 +2,6 @@ import json
 import socket
 import keyboard
 import socket
-import platform
 import time
 
 # IP Adresses, last 3 digits
@@ -16,11 +15,6 @@ IPAddr = socket.gethostbyname(hostname)
 
 print("Your Computer Name is: " + hostname)
 print("Your Computer IP Address is: " + IPAddr)
-
-# Gets the current system
-currentPlatform = platform.system()
-
-print("Your Computer Platform is: " + currentPlatform)
 
 ADDR_A = (IPAddr, 9999)
 ADDR_B = ('192.168.0.165', 9999)
